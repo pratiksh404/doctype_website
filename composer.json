@@ -1,0 +1,32 @@
+{
+  "name": "doctype_admin/doctype_website",
+  "description": "Doctype Admin Package for website kickstart.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "pratiksh404",
+      "email": "pratikdai404@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {},
+  "require-dev": {
+    "orchestra/testbench": "^7.0@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "doctype_admin\\Website\\": "src/"
+    },
+    "files": [
+      "src/Helper/DoctypeAdminWebsiteRouteHelper.php"
+    ]
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "doctype_admin\\Website\\WebsiteServiceProvider",
+        "doctype_admin\\Website\\WebsiteRepositoryServiceProvider"
+      ]
+    }
+  }
+}

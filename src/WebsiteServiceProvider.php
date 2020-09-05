@@ -1,0 +1,130 @@
+<?php
+
+namespace doctype_admin\Website;
+
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
+
+class WebsiteServiceProvider extends ServiceProvider
+{
+    /**
+     *
+     *Bootstrap Doctype Admin Website Services
+     *
+     *@return void
+     *
+     */
+
+    public function boot()
+    {
+        $this->app->runningInConsole() ? $this->registerPublishing() : '';
+        $this->registerResources();
+    }
+
+    /**
+     *
+     *Register Doctype Admin Wensite Services
+     *
+     *@return void
+     *
+     */
+
+    public function register()
+    {
+        //
+    }
+
+    /**
+     *
+     *Register Resources
+     *
+     *@return void
+     *
+     */
+
+    public function registerResources()
+    {
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadFactoriesFrom(__DIR__ . '/../database/factories');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'website');
+        $this->registerRoutes();
+    }
+
+    /**
+     *
+     *Publishing Resources
+     *
+     *@return void
+     *
+     */
+
+    public function registerPublishing()
+    {
+        $this->publishes([
+            __DIR__ . '/../config/website.php' => config_path('website.php')
+        ], 'website-config');
+        $this->publishes([
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/wesbite')
+        ], 'website-views');
+        $this->publishes([
+            __DIR__ . '/../database/migrations' => database_path('migrations')
+        ], 'website-migartions');
+        $this->publishes([
+            __DIR__ . '/../database/seeds' => database_path('seeds')
+        ], 'website-seeds');
+    }
+
+    /**
+     *
+     *Register Routes
+     *
+     *@return void
+     *
+     */
+
+    public function registerRoutes()
+    {
+        /* Web Routes */
+        Route::group($this->routeWebConfiguration(), function () {
+            $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+        });
+        /* API Routes */
+        Route::group($this->routeApiConfiguration(), function () {
+            $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
+        });
+    }
+
+    /**
+     *
+     *Route Web Configuration
+     *
+     *@return array
+     *
+     */
+
+    public function routeWebConfiguration()
+    {
+        return [
+            'prefix' => config('website.prefix', 'admin/website'),
+            'namespace' => 'doctype_admin\Website\Http\Controllers',
+            'middleware' => config('website.middleware', ['web', 'auth', 'activity', 'role:admin']),
+        ];
+    }
+
+    /**
+     *
+     *Route Api Configuration
+     *
+     *@return array
+     *
+     */
+
+    public function routeApiConfiguration()
+    {
+        return [
+            'prefix' => config('website.api_prefix', 'api/website'),
+            'namespace' => 'doctype_admin\Website\Http\Controllers\APIControllers',
+            'middleware' => config('website.api_middleware', ['auth:api']),
+        ];
+    }
+}
