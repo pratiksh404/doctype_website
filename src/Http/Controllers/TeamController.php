@@ -44,8 +44,8 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        dd(request());
-        Team::create($this->validateData());
+        $team = Team::create($this->validateData());
+        $this->uploadImage($team);
         return redirect(websiteRedirectRoute('team'));
     }
 
@@ -90,6 +90,7 @@ class TeamController extends Controller
     public function update(Request $request, Team $team)
     {
         $team->update($this->validateData());
+        $this->uploadImage($team);
         return redirect(websiteRedirectRoute('team'));
     }
 
@@ -114,13 +115,36 @@ class TeamController extends Controller
         return tap(
             request()->validate([
                 'name' => 'required|max:100',
-                'designation' => 'required|numeric',
-                'phone_no.*' => 'numeric',
-                'social_media' => 'sometimes'
+                'designation' => 'required',
+                'phone_no' => 'sometimes',
+                'social_media' => 'sometimes',
+                'description' => 'sometimes|max:5000'
             ]),
             function () {
                 request()->has('image') ? request()->validate(['image' => 'file|image|max:3000']) : '';
             }
         );
+    }
+
+    // Upload Image
+    private function uploadImage($team)
+    {
+        if (request()->has('image')) {
+            $thumbnails = [
+                'storage' => 'uploads/website/team',
+                'width' => '400',
+                'height' => '600',
+                'quality' => '70',
+                'thumbnails' => [
+                    [
+                        'thumbnail-name' => 'small',
+                        'thumbnail-width' => '200',
+                        'thumbnail-height' => '300',
+                        'thumbnail-quality' => '30'
+                    ]
+                ]
+            ];
+            $team->makeThumbnail('image', $thumbnails);
+        }
     }
 }

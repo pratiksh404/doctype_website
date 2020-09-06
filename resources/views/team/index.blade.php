@@ -44,10 +44,11 @@
                     <table id="datatable" class="table table-bordered table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>id</th>
-                                <th>Counter Name</th>
-                                <th>Counts</th>
-                                <th>Icon</th>
+                                <th>Name</th>
+                                <th>Designation</th>
+                                <th>Image</th>
+                                <th>Phone</th>
+                                <th>Social Media</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -55,16 +56,35 @@
                             @if (isset($teams))
                             @foreach ($teams as $team)
                             <tr>
-                                <td>{{$team->id}}</td>
-                                <td>{{$team->counter_name}}</td>
-                                <td>{{$team->count}}</td>
-                                <td><i class="{{$team->counter_icon}}"></i></td>
+                                <td>{{$team->name}}</td>
+                                <td>{{$team->designation}}</td>
+                                <td>
+                                    @if ($team->image)
+                                    <img src="{{url($team->thumbnail('image','small'))}}" alt="{{$team->name}}">
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($team->phone_no)
+                                    @foreach ($team->phone_no as $phone_no)
+                                    {{$phone_no}}
+                                    <br>
+                                    @endforeach
+                                    @endif
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-around">
+                                        @foreach ($team->social_media as $social_media)
+                                        <a href=" {{$social_media['url']}}" target="_blank"><i
+                                                class="{{$social_media['icon']}} text-dark"></i></a>
+                                        @endforeach
+                                    </div>
+                                </td>
                                 <td class="d-flex justify-content-around">
-                                    <a href="{{ websiteEditRoute('Team',$team->id) }}" target="_blank"
+                                    <a href="{{ websiteEditRoute('team',$team->id) }}" target="_blank"
                                         class="btn btn-sm btn-warning" title="Edit counter"><i
                                             class="fas fa-edit"></i></a>
                                     <button type="button" class="btn btn-danger" data-toggle="modal"
-                                        data-target="#counter-delete-{{$team->id}}">
+                                        data-target="#team-delete-{{$team->id}}">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </td>
@@ -75,10 +95,11 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>id</th>
-                                <th>Counter Name</th>
-                                <th>Counts</th>
-                                <th>Icon</th>
+                                <th>Name</th>
+                                <th>Designation</th>
+                                <th>Image</th>
+                                <th>Phone</th>
+                                <th>Social Media</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>

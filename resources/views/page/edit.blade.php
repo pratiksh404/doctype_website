@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Edit Team')
+@section('title', 'Edit Page')
 
 @section('content_header')
 
@@ -9,15 +9,15 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Edit Team</h1>
+                <h1>Edit Page</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ websiteRedirectRoute('dashboard')}}">Home</a>
                     </li>
-                    <li class="breadcrumb-item"><a href="{{ websiteRedirectRoute('team')}}">Team</a>
+                    <li class="breadcrumb-item"><a href="{{ websiteRedirectRoute('page')}}">Page</a>
                     </li>
-                    <li class="breadcrumb-item active">Edit Team</li>
+                    <li class="breadcrumb-item active">Edit Page</li>
                 </ol>
             </div>
         </div>
@@ -34,15 +34,15 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Edit Team</h3>
+                    <h3 class="card-title">Edit Page</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form action="{{ websiteUpdateRoute('team',$team->id) }}" method="POST"
+                    <form action="{{ websiteUpdateRoute('page',$page->id) }}" method="POST"
                         enctype="multipart/form-data">
                         @method('PATCH')
                         @csrf
-                        @include('website::layouts.team.edit_add')
+                        @include('website::layouts.page.edit_add')
                         <br>
                         <input type="submit" value="Edit" class="btn btn-primary">
                     </form>
@@ -62,5 +62,5 @@
 @stop
 
 @section('js')
-@include('website::layouts.team.scripts')
+@include('website::layouts.page.scripts')
 @stop

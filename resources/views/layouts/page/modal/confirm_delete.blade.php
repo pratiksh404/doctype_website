@@ -1,22 +1,22 @@
-@if (!empty($team))
-<div class="modal fade" id="team-delete-{{$team->id}}">
+@if (!empty($page))
+<div class="modal fade" id="page-delete-{{$page->id}}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Delete Team</h4>
+                <h4 class="modal-title">Delete Page</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ websiteDeleteRoute('team',$team->id) }}" method="POST">
+            <form action="{{ websiteDeleteRoute('page',$page->id) }}" method="POST">
                 @method('DELETE')
                 @csrf
                 <div class="modal-body">
-                    <p>Are you sure you want to delete this team ?
+                    <p>Are you sure you want to delete this Page ?
                         <br>
-                        <label>Name</label>
+                        <label>title</label>
                         <br>
-                        {{$team->name}}
+                        {{$page->title}}
                     </p>
                 </div>
                 <div class="modal-footer justify-content-between">
