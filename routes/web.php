@@ -11,3 +11,5 @@ Route::resource('/page', 'PageController');
 Route::resource('/portfolio', 'PortfolioController');
 
 Route::resource('/image', 'ImageController');
+
+Route::resource('/service', 'ServiceController');

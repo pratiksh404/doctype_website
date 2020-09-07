@@ -43,4 +43,34 @@ return [
         | 
         */
     'api_middleware' => ['auth:api'],
+
+    /*
+        |--------------------------------------------------------------------------
+        | Doctype Admin Website Image Management
+        |--------------------------------------------------------------------------
+        | 
+        */
+    // Image Quality
+    'image_quality' => 80,
+
+    //Portfolio Image Storage
+    'portfolio_image_storage' => 'uploads/website/portfolio',
+
+    //Slider Image Storage
+    'slider_image_storage' => 'uploads/website/slider',
+
+    // Vertical Image
+    'vertical_image_width' => 400,
+    'vertical_image_height' => 600,
+
+    // Horizontal Image
+    'horizontal_image_width' => 600,
+    'horizontal_image_height' => 400,
+
+    // Slider Image
+    'slider_image_width' => 800,
+    'slider_image_height' => 600,
+
+    // Normal Image Height/Width
+    'normal_image_hw' => 600,
 ];

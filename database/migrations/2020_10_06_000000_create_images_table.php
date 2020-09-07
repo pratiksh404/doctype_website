@@ -18,12 +18,12 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('image');
-            $table->unsignedBigInteger('portfolio_id');
+            $table->unsignedBigInteger('portfolio_id')->nullable();
             $table->integer('image_type')->default(1);
             $table->string('youtube_link')->nullable();
             $table->string('image_description')->nullable();
             $table->string('redirect_link')->nullable();
-            $table->foreign('portfolio_id')->references('id')->on('portfolios');
+            $table->foreign('portfolio_id')->references('id')->on('portfolios')->onDelete('cascade');
             $table->timestamps();
         });
     }

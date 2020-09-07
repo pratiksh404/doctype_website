@@ -14,6 +14,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <a href="{{websiteCreateRoute('portfolio')}}" class="btn btn-info">Mass Image Assignment</a>
                 <button type="submit" class="btn btn-primary" title="Delete Post">Create</button>
             </div>
             </form>
