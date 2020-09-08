@@ -1,6 +1,6 @@
-@if (isset($portfolio))
-<div class="modal fade" id="portfolio-edit-{{$portfolio->id}}">
-    <div class="modal-dialog">
+@if (isset($service))
+<div class="modal fade" id="service-edit-{{$service->id}}">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Edit Portfolio</h4>
@@ -9,14 +9,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ websiteUpdateRoute('portfolio',$portfolio->id) }}" method="POST">
+                <form action="{{ websiteUpdateRoute('service',$service->id) }}" method="POST">
                     @method('PATCH')
                     @csrf
-                    @include('website::layouts.portfolio.edit_add')
+                    @include('website::layouts.service.edit_add')
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <a href="{{ websiteEditRoute('portfolio',$portfolio->id) }}" class="btn btn-warning">Mass Edit</a>
                 <button type="submit" class="btn btn-primary" title="Delete Post">Edit</button>
             </div>
             </form>

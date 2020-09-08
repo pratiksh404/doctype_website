@@ -13,3 +13,7 @@ Route::resource('/portfolio', 'PortfolioController');
 Route::resource('/image', 'ImageController');
 
 Route::resource('/service', 'ServiceController');
+
+Route::resource('/plan', 'PlanController');
+
+Route::resource('/faq', 'FaqController');

@@ -4,9 +4,9 @@ namespace doctype_admin\Website\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use doctype_admin\Website\Models\Service;
+use doctype_admin\Website\Models\Plan;
 
-class ServiceController extends Controller
+class PlanController extends Controller
 {
     /**
      *
@@ -17,8 +17,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::all();
-        return view('website::service.index', compact('services'));
+        $plans = Plan::all();
+        return view('website::plan.index', compact('plans'));
     }
 
     /**
@@ -30,7 +30,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('website::service.create');
+        return view('website::plan.create');
     }
 
     /**
@@ -44,19 +44,19 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        $service = Service::create($this->validateData());
-        return redirect(websiteRedirectRoute('service'));
+        $plan = Plan::create($this->validateData());
+        return redirect(websiteRedirectRoute('plan'));
     }
 
     /**
      *
      *Shows the resource
-     *@param doctype_admin\Website\Models\Service $service
+     *@param doctype_admin\Website\Models\Plan $plan
      *
      *@return \Illuminate\Http\Response
      *
      */
-    public function show(Service $service)
+    public function show(Plan $plan)
     {
         //
     }
@@ -66,55 +66,57 @@ class ServiceController extends Controller
      *
      *Edit view of resource
      *
-     * @param @param doctype_admin\Website\Models\Service $service
+     * @param @param doctype_admin\Website\Models\Plan $plan
      * 
      *@return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit(Plan $plan)
     {
-        return view('website::service.edit', compact('service'));
+        return view('website::plan.edit', compact('plan'));
     }
 
     /**
      *
      *Updates the resource
      *
-     * @param @param doctype_admin\Website\Models\Service $service
+     * @param @param doctype_admin\Website\Models\Plan $plan
      * 
      * @param \Illuminate\Http\Request $request
      *
      *@return \Illuminate\Http\Response
      *
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request, Plan $plan)
     {
-        $service->update($this->validateData());
-        return redirect(websiteRedirectRoute('service'));
+        $plan->update($this->validateData());
+        return redirect(websiteRedirectRoute('plan'));
     }
 
     /**
      *
      *Deletes the resource
      *
-     * @param @param doctype_admin\Website\Models\Service $service
+     * @param @param doctype_admin\Website\Models\Plan $plan
      *
      *@return \Illuminate\Http\Response
      *
      */
-    public function destroy(Service $service)
+    public function destroy(Plan $plan)
     {
-        $service->delete();
-        return redirect(websiteRedirectRoute('service'));
+        $plan->delete();
+        return redirect(websiteRedirectRoute('plan'));
     }
 
     /* Request Validation */
     private function validateData()
     {
         return request()->validate([
-            'service_name' => 'required|max:100',
-            'service_excerpt' => 'required|max:2000',
-            'service_redirect_link' => 'sometimes|max:255',
-            'service_icon' => 'sometimes|max:255'
+            'plan_name' => 'required|max:100',
+            'plan_period' => 'required|numeric',
+            'plan_price' => 'required',
+            'plan_currency_symbol' => 'sometimes',
+            'plan_color' => 'sometimes',
+            'plan_services' => 'required'
         ]);
     }
 }

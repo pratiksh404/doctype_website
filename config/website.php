@@ -73,4 +73,13 @@ return [
 
     // Normal Image Height/Width
     'normal_image_hw' => 600,
+
+    /*
+       |--------------------------------------------------------------------------
+       | Doctype Admin Service Management
+       |--------------------------------------------------------------------------
+       | 
+       */
+    'service_default_icon' => 'fa fa-concierge-bell',
+    'service_default_redirect_link' => '#'
 ];

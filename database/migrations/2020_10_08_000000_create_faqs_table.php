@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServicesTable extends Migration
+class CreateFaqsTable extends Migration
 {
     /**
      *
@@ -16,26 +16,24 @@ class CreateServicesTable extends Migration
 
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('faqs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('service_name');
-            $table->text('service_excerpt');
-            $table->string('service_redirect_link')->nullable();
-            $table->string('service_icon')->nullable();
+            $table->string('question');
+            $table->text('answer');
             $table->timestamps();
         });
     }
 
     /**
      *
-     *Description
+     *Drops Table
      *
-     *@return return_type
+     *@return void
      *
      */
 
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('faqs');
     }
 }

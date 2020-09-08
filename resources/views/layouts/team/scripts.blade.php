@@ -20,14 +20,12 @@
   
          let count = 0;
          let count_val = $('#count').val();
-         console.log(count_val);
          if(count_val != '' || count_val != null || count_val.length()){
          count = parseInt(count_val) + 1;
          }else{
            count = 0;
          }
        $('#add_social_media').on('click',function(){
-        console.log(count);
          var html = '';
          html += '<div class="row social_media">';
          html += '<div class="col-lg-2">';
@@ -53,7 +51,6 @@
    // remove row
                 $(document).on('click', '#delete_social', function () {
                   count--;
-                  console.log(count);
                 $(this).closest('.social_media').remove();
                 });
   });

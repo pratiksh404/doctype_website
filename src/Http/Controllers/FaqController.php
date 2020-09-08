@@ -4,9 +4,9 @@ namespace doctype_admin\Website\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use doctype_admin\Website\Models\Service;
+use doctype_admin\Website\Models\Faq;
 
-class ServiceController extends Controller
+class FaqController extends Controller
 {
     /**
      *
@@ -17,8 +17,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::all();
-        return view('website::service.index', compact('services'));
+        $faqs = Faq::all();
+        return view('website::faq.index', compact('faqs'));
     }
 
     /**
@@ -30,7 +30,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('website::service.create');
+        //
     }
 
     /**
@@ -44,19 +44,19 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        $service = Service::create($this->validateData());
-        return redirect(websiteRedirectRoute('service'));
+        Faq::create($this->validateData());
+        return redirect(websiteRedirectRoute('faq'));
     }
 
     /**
      *
      *Shows the resource
-     *@param doctype_admin\Website\Models\Service $service
+     *@param doctype_admin\Website\Models\Faq $faq
      *
      *@return \Illuminate\Http\Response
      *
      */
-    public function show(Service $service)
+    public function show(Faq $faq)
     {
         //
     }
@@ -66,55 +66,53 @@ class ServiceController extends Controller
      *
      *Edit view of resource
      *
-     * @param @param doctype_admin\Website\Models\Service $service
+     * @param @param doctype_admin\Website\Models\Faq $faq
      * 
      *@return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit(Faq $faq)
     {
-        return view('website::service.edit', compact('service'));
+        return view('website::faq.edit', compact('faq'));
     }
 
     /**
      *
      *Updates the resource
      *
-     * @param @param doctype_admin\Website\Models\Service $service
+     * @param @param doctype_admin\Website\Models\Faq $faq
      * 
      * @param \Illuminate\Http\Request $request
      *
      *@return \Illuminate\Http\Response
      *
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request, Faq $faq)
     {
-        $service->update($this->validateData());
-        return redirect(websiteRedirectRoute('service'));
+        $faq->update($this->validateData());
+        return redirect(websiteRedirectRoute('faq'));
     }
 
     /**
      *
      *Deletes the resource
      *
-     * @param @param doctype_admin\Website\Models\Service $service
+     * @param @param doctype_admin\Website\Models\Faq $faq
      *
      *@return \Illuminate\Http\Response
      *
      */
-    public function destroy(Service $service)
+    public function destroy(Faq $faq)
     {
-        $service->delete();
-        return redirect(websiteRedirectRoute('service'));
+        $faq->delete();
+        return redirect(websiteRedirectRoute('faq'));
     }
 
     /* Request Validation */
     private function validateData()
     {
         return request()->validate([
-            'service_name' => 'required|max:100',
-            'service_excerpt' => 'required|max:2000',
-            'service_redirect_link' => 'sometimes|max:255',
-            'service_icon' => 'sometimes|max:255'
+            'question' => 'required|max:255',
+            'answer' => 'required|max:5000',
         ]);
     }
 }
