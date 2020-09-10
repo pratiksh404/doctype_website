@@ -3,7 +3,7 @@
 use doctype_admin\Website\Models\Counter;
 use Illuminate\Database\Seeder;
 
-class CounterTableSeeder extends Seeder
+class CountersTableSeeder extends Seeder
 {
     /**
      *

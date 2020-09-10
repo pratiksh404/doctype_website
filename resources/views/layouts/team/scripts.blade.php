@@ -20,11 +20,7 @@
   
          let count = 0;
          let count_val = $('#count').val();
-         if(count_val != '' || count_val != null || count_val.length()){
-         count = parseInt(count_val) + 1;
-         }else{
-           count = 0;
-         }
+         count = count_val != '' && count_val != null ? parseInt(count_val) + 1 : 0;
        $('#add_social_media').on('click',function(){
          var html = '';
          html += '<div class="row social_media">';
@@ -45,7 +41,6 @@
          html += '<input type="hidden" value='+ count +' name="social_media['+ count +'][id]">';
          $('#social_media').append(html);
          count++;
-         
        });
 
    // remove row

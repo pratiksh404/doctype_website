@@ -31,7 +31,9 @@ class WebsiteServiceProvider extends ServiceProvider
 
     public function register()
     {
-        //
+        $this->commands([
+            Console\DoctypeAdminWebsiteInstallerCommand::class
+        ]);
     }
 
     /**

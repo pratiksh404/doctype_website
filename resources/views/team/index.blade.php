@@ -35,7 +35,7 @@
                     <div class=" d-flex justify-content-between">
                         <h3 class="card-title">All Teams </h3>
                         <small> Total Count : {{count($teams)}}</small>
-                        <a href="{{ websiteCreateRoute('team') }}" target="_blank" class="btn btn-success">Create
+                        <a href="{{ websiteCreateRoute('team') }}" class="btn btn-success">Create
                             Team</a>
                     </div>
                 </div>
@@ -80,9 +80,8 @@
                                     </div>
                                 </td>
                                 <td class="d-flex justify-content-around">
-                                    <a href="{{ websiteEditRoute('team',$team->id) }}" target="_blank"
-                                        class="btn btn-sm btn-warning" title="Edit counter"><i
-                                            class="fas fa-edit"></i></a>
+                                    <a href="{{ websiteEditRoute('team',$team->id) }}" class="btn btn-sm btn-warning"
+                                        title="Edit Team"><i class="fas fa-edit"></i></a>
                                     <button type="button" class="btn btn-danger" data-toggle="modal"
                                         data-target="#team-delete-{{$team->id}}">
                                         <i class="fas fa-trash"></i>

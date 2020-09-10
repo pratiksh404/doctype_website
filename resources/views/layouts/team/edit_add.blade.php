@@ -29,7 +29,7 @@
         <input type="file" class="custom-file-input" id="image" name="image">
         <label class="custom-file-label" for="image">Choose file</label>
     </div>
-    @if ($team->image)
+    @if (isset($team->image))
     <div class="col-lg-1">
         <img src="{{url($team->thumbnail('image','small'))}}" alt="{{$team->name}}" class="img-fluid">
     </div>
@@ -52,7 +52,11 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <textarea name="description" id="description" class="textarea" cols="30" rows="10"></textarea>
+                <textarea name="description" id="description" class="textarea" cols="30" rows="10">
+                    @if (isset($team->description))
+                        {!! $team->description !!}
+                    @endif
+                </textarea>
             </div>
             <!-- /.card-body -->
         </div>
@@ -67,15 +71,15 @@
     @foreach ($team->social_media as $social_media)
     <div class="row social_media">
         <div class="col-lg-2">
-            <input type="text" name="social_media['{{$social_media['id']}}'][icon]" class="form-control"
+            <input type="text" name="social_media[{{$social_media['id']}}][icon]" class="form-control"
                 placeholder="Icon" value="{{$social_media['icon']}}">
         </div>
         <div class="col-lg-4">
-            <input type="text" name="social_media['{{$social_media['id']}}'][name]" class="form-control"
+            <input type="text" name="social_media[{{$social_media['id']}}][name]" class="form-control"
                 placeholder="Social Media Name" value="{{ $social_media['name'] }}">
         </div>
         <div class="col-lg-5">
-            <input type="text" name="social_media['{{$social_media['id']}}'][url]" class="form-control"
+            <input type="text" name="social_media[{{$social_media['id']}}][url]" class="form-control"
                 placeholder="Social Media Link" value="{{$social_media['url']}}">
         </div>
         <div class="col-lg-1">
@@ -84,7 +88,7 @@
         </div>
     </div>
     <br>
-    <input type="hidden" value='{{$social_media['id']}}' name="social_media['{{$social_media['id']}}'][id]">
+    <input type="hidden" value='{{$social_media['id']}}' name="social_media[{{$social_media['id']}}][id]">
     @if ($loop->last)
     <input type="hidden" value="{{$social_media['id']}}" name="count" id="count">
     @endif
