@@ -138,17 +138,14 @@ If seed class is not found try running composer dump-autoload
 
 ### Todos
 
-- Better Confile File Control
-- Post Analytics
-- Algolia Post Search Funtionality
+- APIs
+- Website Analytics
 - Maintainabilty
 - Better UI
 
 ## Package Used
 
-- https://github.com/rtconner/laravel-tagging
-- https://github.com/jeroennoten/Laravel-AdminLTE
-- https://github.com/cviebrock/eloquent-sluggable
+- http://image.intervention.io/
 
 ## License
 
