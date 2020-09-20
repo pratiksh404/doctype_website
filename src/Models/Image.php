@@ -26,4 +26,15 @@ class Image extends Model
     {
         return $this->belongsTo(Portfolio::class, 'portfolio_id');
     }
+
+    /* Cache forget on saving or updating */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function () {
+            Cache::forget('images');
+            Cache::forget('image');
+        });
+    }
 }

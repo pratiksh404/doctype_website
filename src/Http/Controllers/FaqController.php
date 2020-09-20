@@ -5,6 +5,7 @@ namespace doctype_admin\Website\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use doctype_admin\Website\Models\Faq;
+use Illuminate\Support\Facades\Cache;
 
 class FaqController extends Controller
 {
@@ -17,7 +18,11 @@ class FaqController extends Controller
      */
     public function index()
     {
-        $faqs = Faq::all();
+        $faqs = Cache::has('faqs')
+            ? Cache::get('faqs')
+            : Cache::rememberForever('faqs', function () {
+                return Faq::all();
+            });
         return view('website::faq.index', compact('faqs'));
     }
 

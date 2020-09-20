@@ -60,7 +60,8 @@
                                 <td>{{$team->designation}}</td>
                                 <td>
                                     @if ($team->image)
-                                    <img src="{{url($team->thumbnail('image','small'))}}" alt="{{$team->name}}">
+                                    <img src="{{ url(asset('storage/'.$team->image)) }}" alt="{{$team->name}}"
+                                        width="80">
                                     @endif
                                 </td>
                                 <td>

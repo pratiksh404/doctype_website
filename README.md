@@ -1,5 +1,7 @@
 ![Doctype Admin Blog](https://github.com/pratiksh404/doctype_website/blob/master/image/doctype_website.png)
 
+[![Issues](https://img.shields.io/github/issues/pratiksh404/doctype_website)](https://github.com/pratiksh404/doctype_website/issues) [![Latest Stable Version](https://poser.pugx.org/doctype_admin/doctype_website/v)](//packagist.org/packages/doctype_admin/doctype_website) [![Stars](https://img.shields.io/github/stars/pratiksh404/doctype_website)](https://github.com/pratiksh404/doctype_website/stargazers) ![Downloads](https://poser.pugx.org/doctype_admin/doctype_website/downloads) [![Issues](https://img.shields.io/github/license/pratiksh404/doctype_website)](https://github.com/pratiksh404/doctype_website/blob/master/LICENSE)
+
 #### Contains : -
 
 - Counters
@@ -138,7 +140,6 @@ If seed class is not found try running composer dump-autoload
 
 ### Todos
 
-- APIs
 - Website Analytics
 - Maintainabilty
 - Better UI

@@ -23,4 +23,15 @@ class Service extends Model
             $this->attributes['service_icon']  = config('website.service_default_icon', 'fa fa-concierge-bell');
         }
     }
+
+    /* Cache forget on saving or updating */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function () {
+            Cache::forget('services');
+            Cache::forget('service');
+        });
+    }
 }

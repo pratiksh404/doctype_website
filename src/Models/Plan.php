@@ -22,4 +22,15 @@ class Plan extends Model
             5 => 'Year'
         ][$attribute];
     }
+
+    /* Cache forget on saving or updating */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function () {
+            Cache::forget('plans');
+            Cache::forget('plan');
+        });
+    }
 }

@@ -4,6 +4,7 @@ namespace doctype_admin\Website\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Cache;
 use doctype_admin\Website\Models\Team;
 
 class TeamController extends Controller
@@ -17,7 +18,11 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $teams = Team::all();
+        $teams = Cache::has('teams')
+            ? Cache::get('teams')
+            : Cache::rememberForever('teams', function () {
+                return Team::all();
+            });
         return view('website::team.index', compact('teams'));
     }
 
@@ -45,7 +50,7 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         $team = Team::create($this->validateData());
-        $this->uploadImage($team);
+        $this->uploadImg($team);
         return redirect(websiteRedirectRoute('team'));
     }
 
@@ -90,7 +95,7 @@ class TeamController extends Controller
     public function update(Request $request, Team $team)
     {
         $team->update($this->validateData());
-        $this->uploadImage($team);
+        $this->uploadImg($team);
         return redirect(websiteRedirectRoute('team'));
     }
 
@@ -127,7 +132,7 @@ class TeamController extends Controller
     }
 
     // Upload Image
-    private function uploadImage($team)
+    private function uploadImg($team)
     {
         if (request()->has('image')) {
             $thumbnails = [
@@ -135,16 +140,8 @@ class TeamController extends Controller
                 'width' => '400',
                 'height' => '600',
                 'quality' => '70',
-                'thumbnails' => [
-                    [
-                        'thumbnail-name' => 'small',
-                        'thumbnail-width' => '200',
-                        'thumbnail-height' => '300',
-                        'thumbnail-quality' => '30'
-                    ]
-                ]
             ];
-            $team->makeThumbnail('image', $thumbnails);
+            $team->uploadImage('image', $thumbnails);
         }
     }
 }

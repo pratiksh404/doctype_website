@@ -4,6 +4,7 @@ namespace doctype_admin\Website\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Cache;
 use doctype_admin\Website\Models\Portfolio;
 
 class PortfolioController extends Controller
@@ -17,7 +18,11 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        $portfolios = Portfolio::all();
+        $portfolios = Cache::has('portfolios')
+            ? Cache::get('portfolios')
+            : Cache::rememberForever('portfolios', function () {
+                return Portfolio::all();
+            });
         return view('website::portfolio.index', compact('portfolios'));
     }
 

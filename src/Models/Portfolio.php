@@ -13,4 +13,15 @@ class Portfolio extends Model
     {
         return $this->hasMany(Image::class);
     }
+
+    /* Cache forget on saving or updating */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function () {
+            Cache::forget('portfolios');
+            Cache::forget('portfolio');
+        });
+    }
 }

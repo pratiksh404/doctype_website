@@ -91,9 +91,11 @@ class WebsiteServiceProvider extends ServiceProvider
             $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
         });
         /* API Routes */
-        Route::group($this->routeApiConfiguration(), function () {
-            $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
-        });
+        if (config('website.api_routes', false)) {
+            Route::group($this->routeApiConfiguration(), function () {
+                $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
+            });
+        }
     }
 
     /**
@@ -125,8 +127,8 @@ class WebsiteServiceProvider extends ServiceProvider
     {
         return [
             'prefix' => config('website.api_prefix', 'api/website'),
-            'namespace' => 'doctype_admin\Website\Http\Controllers\APIControllers',
-            'middleware' => config('website.api_middleware', ['auth:api']),
+            'namespace' => 'doctype_admin\Website\Http\APIControllers',
+            'middleware' => config('website.api_middleware', ['web']),
         ];
     }
 }

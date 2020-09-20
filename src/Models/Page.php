@@ -13,4 +13,15 @@ class Page extends Model
     protected $casts = [
         'meta_keywords' => 'array'
     ];
+
+    /* Cache forget on saving or updating */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function () {
+            Cache::forget('pages'); //All Pages
+            Cache::forget('page'); // Single Page
+        });
+    }
 }

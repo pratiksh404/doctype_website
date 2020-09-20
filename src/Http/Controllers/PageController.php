@@ -5,6 +5,7 @@ namespace doctype_admin\Website\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use doctype_admin\Website\Models\Page;
+use Illuminate\Support\Facades\Cache;
 
 class PageController extends Controller
 {
@@ -17,7 +18,11 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::all();
+        $pages = Cache::has('pages')
+            ? Cache::get('pages')
+            : Cache::rememberForever('pages', function () {
+                return Page::all();
+            });
         return view('website::page.index', compact('pages'));
     }
 
