@@ -1,4 +1,4 @@
-![Doctype Admin Blog](https://github.com/pratiksh404/doctype_website/blob/master/image/doctype_website.png)
+![Doctype Admin Website](https://github.com/pratiksh404/doctype_website/blob/master/image/doctype_website.png)
 
 [![Issues](https://img.shields.io/github/issues/pratiksh404/doctype_website)](https://github.com/pratiksh404/doctype_website/issues) [![Latest Stable Version](https://poser.pugx.org/doctype_admin/doctype_website/v)](//packagist.org/packages/doctype_admin/doctype_website) [![Stars](https://img.shields.io/github/stars/pratiksh404/doctype_website)](https://github.com/pratiksh404/doctype_website/stargazers) ![Downloads](https://poser.pugx.org/doctype_admin/doctype_website/downloads) [![Issues](https://img.shields.io/github/license/pratiksh404/doctype_website)](https://github.com/pratiksh404/doctype_website/blob/master/LICENSE)
 
@@ -25,7 +25,7 @@ composer require doctype_admin/doctype_website
 #### Install all assets
 
 ```sh
-php artisan DoctypeAdminBlog:install -a
+php artisan DoctypeAdminWebsite:install -a
 ```
 
 This command will publish
@@ -38,25 +38,25 @@ This command will publish
 #### Install config file only
 
 ```sh
-php artisan DoctypeAdminBlog:install -c
+php artisan DoctypeAdminWebsite:install -c
 ```
 
 #### Install view files only
 
 ```sh
-php artisan DoctypeAdminBlog:install -f
+php artisan DoctypeAdminWebsite:install -f
 ```
 
 #### Install migrations files only
 
 ```sh
-php artisan DoctypeAdminBlog:install -m
+php artisan DoctypeAdminWebsite:install -m
 ```
 
 #### Install seed files only
 
 ```sh
-php artisan DoctypeAdminBlog:install -d
+php artisan DoctypeAdminWebsite:install -d
 ```
 
 ## Then migrate database
