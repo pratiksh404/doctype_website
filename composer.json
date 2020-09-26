@@ -23,8 +23,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "doctype_admin\\Website\\WebsiteServiceProvider",
-        "doctype_admin\\Website\\WebsiteRepositoryServiceProvider"
+        "doctype_admin\\Website\\WebsiteServiceProvider"
       ]
     }
   }
