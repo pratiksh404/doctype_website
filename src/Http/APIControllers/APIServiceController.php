@@ -6,7 +6,7 @@ use doctype_admin\Website\Models\Service;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Cache;
 
-class APIserviceController extends Controller
+class APIServiceController extends Controller
 {
     /**
      *
