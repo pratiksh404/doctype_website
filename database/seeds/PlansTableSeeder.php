@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 class PlansTableSeeder extends Seeder
 {
     /* Run Seeder */
-    public function up()
+    public function run()
     {
         $plans = [
             [

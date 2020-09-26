@@ -9,9 +9,11 @@
  *@return String
  *
  */
-function websiteBaseUrl($route)
-{
-    return url(config('website.prefix', 'admin/website') . '/' . $route);
+if (!function_exists('websiteBaseUrl')) {
+    function websiteBaseUrl($route)
+    {
+        return url(config('website.prefix', 'admin/website') . '/' . $route);
+    }
 }
 
 /**
@@ -23,9 +25,11 @@ function websiteBaseUrl($route)
  *@return String
  *
  */
-function websiteRedirectRoute($route)
-{
-    return websiteBaseUrl($route);
+if (!function_exists('websiteRedirectRoute')) {
+    function websiteRedirectRoute($route)
+    {
+        return websiteBaseUrl($route);
+    }
 }
 
 /**
@@ -37,9 +41,11 @@ function websiteRedirectRoute($route)
  *@return String
  *
  */
-function websiteCreateRoute($route)
-{
-    return websiteBaseUrl($route) . '/create';
+if (!function_exists('websiteCreateRoute')) {
+    function websiteCreateRoute($route)
+    {
+        return websiteBaseUrl($route) . '/create';
+    }
 }
 
 /**
@@ -53,9 +59,11 @@ function websiteCreateRoute($route)
  *
  */
 
-function websiteShowRoute($route, $id)
-{
-    return websiteBaseUrl($route) . '/' . $id;
+if (!function_exists('websiteShowRoute')) {
+    function websiteShowRoute($route, $id)
+    {
+        return websiteBaseUrl($route) . '/' . $id;
+    }
 }
 
 /**
@@ -68,9 +76,11 @@ function websiteShowRoute($route, $id)
  *@return String
  *
  */
-function websiteEditRoute($route, $id)
-{
-    return websiteBaseUrl($route) . '/' . $id . '/edit';
+if (!function_exists('websiteEditRoute')) {
+    function websiteEditRoute($route, $id)
+    {
+        return websiteBaseUrl($route) . '/' . $id . '/edit';
+    }
 }
 
 /**
@@ -82,9 +92,11 @@ function websiteEditRoute($route, $id)
  *@return String
  *
  */
-function websiteStoreRoute($route)
-{
-    return websiteBaseUrl($route);
+if (!function_exists('websiteStoreRoute')) {
+    function websiteStoreRoute($route)
+    {
+        return websiteBaseUrl($route);
+    }
 }
 
 /**
@@ -97,9 +109,11 @@ function websiteStoreRoute($route)
  *@return String
  *
  */
-function websiteUpdateRoute($route, $id)
-{
-    return websiteBaseUrl($route) . '/' . $id;
+if (!function_exists('websiteUpdateRoute')) {
+    function websiteUpdateRoute($route, $id)
+    {
+        return websiteBaseUrl($route) . '/' . $id;
+    }
 }
 
 /**
@@ -112,7 +126,9 @@ function websiteUpdateRoute($route, $id)
  *@return String
  *
  */
-function websiteDeleteRoute($route, $id)
-{
-    return websiteBaseUrl($route) . '/' . $id;
+if (!function_exists('websiteDeleteRoute')) {
+    function websiteDeleteRoute($route, $id)
+    {
+        return websiteBaseUrl($route) . '/' . $id;
+    }
 }

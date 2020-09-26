@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 class FaqsTableSeeder extends Seeder
 {
     /* Run Seeder */
-    public function up()
+    public function run()
     {
         $faqs = [
             [

@@ -6,7 +6,7 @@ use doctype_admin\Website\Models\Page;
 class PagesTableSeeder extends Seeder
 {
     /* Run Seeding */
-    public function up()
+    public function run()
     {
         $pages = [
             [

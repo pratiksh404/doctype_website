@@ -12,7 +12,7 @@ class CountersTableSeeder extends Seeder
      *@return void
      *
      */
-    public function up()
+    public function run()
     {
         $counters = [
             [

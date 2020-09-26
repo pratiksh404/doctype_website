@@ -5,7 +5,7 @@ use doctype_admin\Website\Models\Team;
 
 class TeamsTableSeeder extends Seeder
 {
-    public function up()
+    public function run()
     {
         $teams = [
             [

@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 class ServicesTableSeeder extends Seeder
 {
     /* Run Seeder */
-    public function up()
+    public function run()
     {
         $services = [
             [
