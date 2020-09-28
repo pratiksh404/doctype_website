@@ -2,6 +2,7 @@
 
 namespace doctype_admin\Website\Models;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 
 class Plan extends Model
@@ -30,7 +31,6 @@ class Plan extends Model
 
         static::saving(function () {
             Cache::forget('plans');
-            Cache::forget('plan');
         });
     }
 }

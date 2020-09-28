@@ -2,6 +2,7 @@
 
 namespace doctype_admin\Website\Models;
 
+use Illuminate\Support\Facades\Cache;
 use drh2so4\Thumbnail\Traits\Thumbnail;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,7 +22,6 @@ class Page extends Model
 
         static::saving(function () {
             Cache::forget('pages'); //All Pages
-            Cache::forget('page'); // Single Page
         });
     }
 }

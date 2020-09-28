@@ -122,7 +122,9 @@ class ImageController extends Controller
     {
         return tap(
             request()->validate([
+                'name' => 'sometimes|max:255',
                 'image' => 'sometimes',
+                'excerpt' => 'sometimes|max:1000',
                 'portfolio_id' => 'numeric',
                 'image_type' => 'required|numeric',
                 'youtube_link' => 'sometimes|max:255',

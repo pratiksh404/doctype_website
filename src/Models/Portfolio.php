@@ -2,6 +2,7 @@
 
 namespace doctype_admin\Website\Models;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 
 class Portfolio extends Model
@@ -21,7 +22,6 @@ class Portfolio extends Model
 
         static::saving(function () {
             Cache::forget('portfolios');
-            Cache::forget('portfolio');
         });
     }
 }

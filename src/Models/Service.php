@@ -2,6 +2,7 @@
 
 namespace doctype_admin\Website\Models;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
@@ -31,7 +32,6 @@ class Service extends Model
 
         static::saving(function () {
             Cache::forget('services');
-            Cache::forget('service');
         });
     }
 }

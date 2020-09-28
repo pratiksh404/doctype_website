@@ -17,7 +17,9 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name')->nullable();
             $table->string('image');
+            $table->text('excerpt')->nullable();
             $table->unsignedBigInteger('portfolio_id')->nullable();
             $table->integer('image_type')->default(1);
             $table->string('youtube_link')->nullable();

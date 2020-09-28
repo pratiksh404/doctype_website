@@ -1,4 +1,12 @@
 <div class="row">
+    <div class="col-lg-12">
+        <label for="image_name">Image Name</label>
+        <input type="text" name="name" class="form-control" id="image_name" value="{{$image->name ?? old('name')}}"
+            placeholder="Image Name">
+    </div>
+</div>
+<br>
+<div class="row">
     <div class="col-lg-4">
         <input type="file" class="custom-file-input" id="image" name="image">
         <label class="custom-file-label" for="image">Choose Image</label>
@@ -51,6 +59,14 @@
 </div>
 <br>
 <div class="row">
+    <div class="col-lg-12">
+        <label for="image_excerpt">Image Excerpt</label>
+        <textarea name="excerpt" id="image_excerpt" class="textarea">
+                        @if (isset($image->excerpt))
+                            {!!$image->excerpt !!}
+                        @endif
+                    </textarea>
+    </div>
     <div class="col-lg-12">
         <label for="image_description">Image Description</label>
         <textarea name="image_description" id="image_description" class="textarea">

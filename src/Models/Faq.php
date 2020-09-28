@@ -16,7 +16,6 @@ class Faq extends Model
 
         static::saving(function () {
             Cache::forget('faqs');
-            Cache::forget('faq');
         });
     }
 }

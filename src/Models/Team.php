@@ -24,7 +24,6 @@ class Team extends Model
 
         static::saving(function () {
             Cache::forget('teams');
-            Cache::forget('team');
         });
     }
 }

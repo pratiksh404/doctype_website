@@ -2,12 +2,16 @@
 
 namespace doctype_admin\Website\Models;
 
+use doctype_admin\Website\Traits\Scopes\ImageScopes;
+use Illuminate\Support\Facades\Cache;
 use drh2so4\Thumbnail\Traits\Thumbnail;
 use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
     use Thumbnail;
+    use ImageScopes;
+
     protected $guarded = [];
 
     public function getImageTypeAttribute($attribute)
@@ -34,7 +38,6 @@ class Image extends Model
 
         static::saving(function () {
             Cache::forget('images');
-            Cache::forget('image');
         });
     }
 }

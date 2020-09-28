@@ -16,7 +16,6 @@ class Counter extends Model
 
         static::saving(function () {
             Cache::forget('counters');
-            Cache::forget('counter');
         });
     }
 }
