@@ -110,6 +110,7 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
+        $page->meta_image ? $page->hardDelete('meta_image') : '';
         $page->delete();
         return redirect(websiteRedirectRoute('page'));
     }

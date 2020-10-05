@@ -2,6 +2,8 @@
 
 namespace doctype_admin\Website;
 
+use doctype_admin\Website\Contracts\ImageDataRepositoryInterface;
+use doctype_admin\Website\Repositories\ImageDataRepository;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -34,6 +36,8 @@ class WebsiteServiceProvider extends ServiceProvider
         $this->commands([
             Console\DoctypeAdminWebsiteInstallerCommand::class
         ]);
+        $this->repositoryInterfaceBinding();
+        $this->facades();
     }
 
     /**
@@ -130,5 +134,31 @@ class WebsiteServiceProvider extends ServiceProvider
             'namespace' => 'doctype_admin\Website\Http\APIControllers',
             'middleware' => config('website.api_middleware', ['web']),
         ];
+    }
+
+    /**
+     *
+     *Repository Interface Binding
+     *
+     *@return void
+     *
+     */
+    private function repositoryInterfaceBinding()
+    {
+        $this->app->bind(ImageDataRepositoryInterface::class, ImageDataRepository::class);
+    }
+
+    /**
+     *
+     *Facades Binding
+     *
+     *@return void
+     *
+     */
+    private function facades(): void
+    {
+        app()->bind('website_image', function () {
+            return new ImageDataRepository;
+        });
     }
 }

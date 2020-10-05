@@ -113,7 +113,7 @@ class ImageController extends Controller
      */
     public function destroy(Image $image)
     {
-        $image->delete() && File::exists(public_path('storage/' . $image->image)) ? File::delete(public_path('storage/' . $image->image)) : false;
+        $image->hardDeleteWithParent('image');
         return redirect(websiteRedirectRoute('image'));
     }
 

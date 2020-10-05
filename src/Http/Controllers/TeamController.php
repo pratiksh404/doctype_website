@@ -110,6 +110,7 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
+        $team->image ? $team->hardDelete('image') : '';
         $team->delete();
         return redirect(websiteRedirectRoute('team'));
     }

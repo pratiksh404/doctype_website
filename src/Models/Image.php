@@ -12,6 +12,7 @@ class Image extends Model
     use Thumbnail;
     use ImageScopes;
 
+
     protected $guarded = [];
 
     public function getImageTypeAttribute($attribute)

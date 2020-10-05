@@ -34,10 +34,6 @@ class APIImageController extends Controller
      */
     public function show(Image $image)
     {
-        return Cache::has('image')
-            ? Cache::get('image')
-            : Cache::rememberForever('image', function () use ($image) {
-                return $image;
-            });
+        return $image;
     }
 }
