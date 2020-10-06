@@ -3,7 +3,9 @@
 namespace doctype_admin\Website;
 
 use doctype_admin\Website\Contracts\ImageDataRepositoryInterface;
+use doctype_admin\Website\Contracts\WebsiteDataRepositoryInterface;
 use doctype_admin\Website\Repositories\ImageDataRepository;
+use doctype_admin\Website\Repositories\WebsiteDataRepository;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -146,6 +148,7 @@ class WebsiteServiceProvider extends ServiceProvider
     private function repositoryInterfaceBinding()
     {
         $this->app->bind(ImageDataRepositoryInterface::class, ImageDataRepository::class);
+        $this->app->bind(WebsiteDataRepositoryInterface::class, WebsiteDataRepository::class);
     }
 
     /**
@@ -159,6 +162,10 @@ class WebsiteServiceProvider extends ServiceProvider
     {
         app()->bind('website_image', function () {
             return new ImageDataRepository;
+        });
+
+        app()->bind('website', function () {
+            return new WebsiteDataRepository;
         });
     }
 }

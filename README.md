@@ -99,7 +99,7 @@ If seed class is not found try running composer dump-autoload
                 [
                     'text' => 'Page',
                     'icon' => 'fas fa-file',
-                    'url' => 'admin/website/plan',
+                    'url' => 'admin/website/page',
                 ],
                 [
                     'text' => 'Portfolio',

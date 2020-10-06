@@ -4,8 +4,8 @@ namespace doctype_admin\Website\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Cache;
 use doctype_admin\Website\Models\Service;
+use doctype_admin\Website\Facades\Website;
 
 class ServiceController extends Controller
 {
@@ -18,11 +18,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Cache::has('services')
-            ? Cache::get('services')
-            : Cache::rememberForever('services', function () {
-                return Service::all();
-            });
+        $services = Website::service();
         return view('website::service.index', compact('services'));
     }
 

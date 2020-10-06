@@ -2,10 +2,10 @@
 
 namespace doctype_admin\Website\Http\Controllers;
 
+use doctype_admin\Website\Facades\Website;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use doctype_admin\Website\Models\Counter;
-use Illuminate\Support\Facades\Cache;
 
 class CounterController extends Controller
 {
@@ -18,11 +18,7 @@ class CounterController extends Controller
      */
     public function index()
     {
-        $counters = Cache::has('counters')
-            ? Cache::get('counters')
-            : Cache::rememberForever('counters', function () {
-                return Counter::all();
-            });
+        $counters = Website::counter();
         return view('website::counter.index', compact('counters'));
     }
 

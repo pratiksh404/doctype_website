@@ -26,7 +26,8 @@
         "doctype_admin\\Website\\WebsiteServiceProvider"
       ],
       "aliases": {
-        "Image": "doctype_admin\\Website\\Facades\\Image"
+        "Image": "doctype_admin\\Website\\Facades\\Image",
+        "Website": "doctype_admin\\Website\\Facades\\Website"
       }
     }
   }

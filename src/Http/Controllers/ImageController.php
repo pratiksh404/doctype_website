@@ -2,12 +2,12 @@
 
 namespace doctype_admin\Website\Http\Controllers;
 
+use doctype_admin\Website\Facades\Image as Doctype_adminImage;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\File;
 use doctype_admin\Website\Models\Image;
 use doctype_admin\Website\Models\Portfolio;
-use Illuminate\Support\Facades\Cache;
+
 
 class ImageController extends Controller
 {
@@ -20,11 +20,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images = Cache::has('images')
-            ? Cache::get('images')
-            : Cache::rememberForever('images', function () {
-                return Image::with('portfolio')->get();
-            });
+        $images = Doctype_adminImage::getAll();
         return view('website::image.index', compact('images'));
     }
 

@@ -4,8 +4,8 @@ namespace doctype_admin\Website\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Cache;
 use doctype_admin\Website\Models\Team;
+use doctype_admin\Website\Facades\Website;
 
 class TeamController extends Controller
 {
@@ -18,11 +18,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $teams = Cache::has('teams')
-            ? Cache::get('teams')
-            : Cache::rememberForever('teams', function () {
-                return Team::all();
-            });
+        $teams = Website::team();
         return view('website::team.index', compact('teams'));
     }
 

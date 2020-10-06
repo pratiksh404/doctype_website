@@ -2,6 +2,7 @@
 
 namespace doctype_admin\Website\Http\Controllers;
 
+use doctype_admin\Website\Facades\Website;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Cache;
@@ -18,11 +19,7 @@ class PlanController extends Controller
      */
     public function index()
     {
-        $plans = Cache::has('plans')
-            ? Cache::get('plans')
-            : Cache::rememberForever('plans', function () {
-                return Plan::all();
-            });
+        $plans = Website::plan();
         return view('website::plan.index', compact('plans'));
     }
 
