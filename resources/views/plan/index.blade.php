@@ -70,8 +70,8 @@
                                     @include('website::layouts.plan.modal.show_plan_services')
                                 </td>
                                 <td class="d-flex justify-content-around">
-                                    <a href="{{ websiteEditRoute('plan',$plan->id) }}" target="_blank"
-                                        class="btn btn-sm btn-warning" title="Edit Plan"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ websiteEditRoute('plan',$plan->id) }}" class="btn btn-sm btn-warning"
+                                        title="Edit Plan"><i class="fas fa-edit"></i></a>
                                     <button type="button" class="btn btn-danger" data-toggle="modal"
                                         data-target="#plan-delete-{{$plan->id}}">
                                         <i class="fas fa-trash"></i>

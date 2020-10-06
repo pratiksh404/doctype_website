@@ -136,6 +136,7 @@ class ImageController extends Controller
     // Upload Image
     private function uploadImage($img)
     {
+        $storage = $this->getLocation($img);
         $multi =  request()->image_type == 5
             ?  [
                 'storage' => config('website.slider_image_storage', 'uploads/website/slider'),
@@ -151,7 +152,7 @@ class ImageController extends Controller
                     ]
                 ]
             ] : [
-                'storage' => $img->image_type == "Slider" ? 'uploads/website/normal_image' : 'uploads/website/portfolio/' . $img->portfolio->portfolio,
+                'storage' => $storage,
                 'width' => $img->image_type == "Vertical" ? config('website.vertical_image_width', 400) : ($img->image_type == "Horizontal" ? config('website.horizontal_image_width', 600) : config('website.normal_image_hw', 600)),
                 'height' => $img->image_type == "Vertical" ? config('website.vertical_image_height', 600) : ($img->image_type == "Horizontal" ? config('website.horizontal_image_height', 400) : config('website.normal_image_hw', 600)),
                 'quality' => '80',
@@ -172,5 +173,32 @@ class ImageController extends Controller
             ];
 
         return $img->makeThumbnail('image', $multi);
+    }
+
+    private function getLocation($img)
+    {
+        if ($img->portfolio_id) {
+            $portfolio = str_replace(' ', '', $img->portfolio->portfolio);
+            $storage = $this->getDirectory($img, $portfolio);
+        } else {
+            $storage = $this->getDirectory($img);
+        }
+        return $storage;
+    }
+
+    private function getDirectory($img, $portfolio = null)
+    {
+        if ($img->image_type == "Normal") {
+            $storage = 'uploads/website/' . (isset($portfolio) ? $portfolio . '/' : '') . 'normalImage';
+        } elseif ($img->image_type == "Vertical") {
+            $storage = 'uploads/website/' . (isset($portfolio) ? $portfolio . '/' : '') . 'verticalImage';
+        } elseif ($img->image_type == "Horizontal") {
+            $storage = 'uploads/website/' . (isset($portfolio) ? $portfolio . '/' : '') . 'horizontalImage';
+        } elseif ($img->image_type == "Video") {
+            $storage = 'uploads/website/' . (isset($portfolio) ? $portfolio . '/' : '') . 'videoImage';
+        } else {
+            $storage = 'uploads/website/image';
+        }
+        return $storage;
     }
 }

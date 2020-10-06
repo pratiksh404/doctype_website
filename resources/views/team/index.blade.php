@@ -75,7 +75,7 @@
                                 <td>
                                     <div class="d-flex justify-content-around">
                                         @foreach ($team->social_media as $social_media)
-                                        <a href=" {{$social_media['url']}}" target="_blank"><i
+                                        <a href=" {{$social_media['url']}}"><i
                                                 class="{{$social_media['icon']}} text-dark"></i></a>
                                         @endforeach
                                     </div>

@@ -12,7 +12,7 @@
         <label class="custom-file-label" for="image">Choose Image</label>
     </div>
     <div class="col-lg-4">
-        <select name="image_type" id="image_type" class="select2 form-control">
+        <select name="portfolio_id" id="image_type" class="select2 form-control">
             <option value="null">Image Portfolio ..</option>
             @foreach ($portfolios as $portfolio)
             <option value="{{$portfolio->id}}"

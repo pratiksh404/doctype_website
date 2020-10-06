@@ -62,7 +62,7 @@
                                 <td>{{$counter->count}}</td>
                                 <td><i class="{{$counter->counter_icon}}"></i></td>
                                 <td class="d-flex justify-content-around">
-                                    <a href="{{ websiteEditRoute('counter',$counter->id) }}" target="_blank"
+                                    <a href="{{ websiteEditRoute('counter',$counter->id) }}"
                                         class="btn btn-sm btn-warning" title="Edit counter"><i
                                             class="fas fa-edit"></i></a>
                                     <button type="button" class="btn btn-danger" data-toggle="modal"

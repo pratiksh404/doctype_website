@@ -35,7 +35,7 @@
                     <div class=" d-flex justify-content-between">
                         <h3 class="card-title">All Pages </h3>
                         <small> Total Count : {{count($pages)}}</small>
-                        <a href="{{ websiteCreateRoute('page') }}" target="_blank" class="btn btn-success">Create
+                        <a href="{{ websiteCreateRoute('page') }}" class="btn btn-success">Create
                             Page</a>
                     </div>
                 </div>
@@ -54,8 +54,8 @@
                             <tr>
                                 <td>{{$page->title}}</td>
                                 <td class="d-flex justify-content-around">
-                                    <a href="{{ websiteEditRoute('page',$page->id) }}" target="_blank"
-                                        class="btn btn-sm btn-warning" title="Edit Page"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ websiteEditRoute('page',$page->id) }}" class="btn btn-sm btn-warning"
+                                        title="Edit Page"><i class="fas fa-edit"></i></a>
                                     <button type="button" class="btn btn-danger" data-toggle="modal"
                                         data-target="#page-delete-{{$page->id}}">
                                         <i class="fas fa-trash"></i>

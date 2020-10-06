@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+a@extends('adminlte::page')
 
 @section('title', 'Images')
 
@@ -76,9 +76,8 @@
                                     @endif
                                 </td>
                                 <td class="d-flex justify-content-around">
-                                    <a href="{{ websiteEditRoute('image',$image->id) }}" target="_blank"
-                                        class="btn btn-sm btn-warning" title="Edit Image"><i
-                                            class="fas fa-edit"></i></a>
+                                    <a href="{{ websiteEditRoute('image',$image->id) }}" class="btn btn-sm btn-warning"
+                                        title="Edit Image"><i class="fas fa-edit"></i></a>
                                     <button type="button" class="btn btn-danger" data-toggle="modal"
                                         data-target="#image-delete-{{$image->id}}">
                                         <i class="fas fa-trash"></i>
