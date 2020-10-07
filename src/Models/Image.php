@@ -38,11 +38,22 @@ class Image extends Model
         parent::boot();
 
         static::saving(function () {
-            Cache::forget('images');
+            self::cacheKeys();
         });
 
         static::deleting(function () {
-            Cache::forget('images');
+            self::cacheKeys();
         });
+    }
+
+    // Cache Keys
+    private static function cacheKeys()
+    {
+        Cache::forget('images');
+        Cache::forget('normal_images');
+        Cache::forget('vertical_images');
+        Cache::forget('horizontal_images');
+        Cache::forget('video_thumbnail_images');
+        Cache::forget('slider_images');
     }
 }
