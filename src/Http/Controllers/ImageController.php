@@ -95,6 +95,7 @@ class ImageController extends Controller
     public function update(Request $request, Image $image)
     {
         $image->update($this->validateData());
+        $this->uploadImage($image);
         return redirect(websiteRedirectRoute('image'));
     }
 
