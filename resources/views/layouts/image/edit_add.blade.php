@@ -13,7 +13,6 @@
     </div>
     <div class="col-lg-4">
         <select name="portfolio_id" id="image_type" class="select2 form-control">
-            <option value="null">Image Portfolio ..</option>
             @foreach ($portfolios as $portfolio)
             <option value="{{$portfolio->id}}"
                 {{isset($image->portfolio_id) ? $image->portfolio_id == $portfolio->id ? 'selected' : '' : ''}}>

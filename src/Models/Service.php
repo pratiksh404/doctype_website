@@ -25,12 +25,16 @@ class Service extends Model
         }
     }
 
-    /* Cache forget on saving or updating */
+    /* Cache forget on saving or updating and deleting */
     public static function boot()
     {
         parent::boot();
 
         static::saving(function () {
+            Cache::forget('services');
+        });
+
+        static::deleting(function () {
             Cache::forget('services');
         });
     }

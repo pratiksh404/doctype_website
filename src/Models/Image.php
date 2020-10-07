@@ -32,12 +32,16 @@ class Image extends Model
         return $this->belongsTo(Portfolio::class, 'portfolio_id');
     }
 
-    /* Cache forget on saving or updating */
+    /* Cache forget on saving or updating and deleting */
     public static function boot()
     {
         parent::boot();
 
         static::saving(function () {
+            Cache::forget('images');
+        });
+
+        static::deleting(function () {
             Cache::forget('images');
         });
     }

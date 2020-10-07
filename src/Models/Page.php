@@ -23,5 +23,9 @@ class Page extends Model
         static::saving(function () {
             Cache::forget('pages'); //All Pages
         });
+
+        static::deleting(function () {
+            Cache::forget('pages');
+        });
     }
 }
