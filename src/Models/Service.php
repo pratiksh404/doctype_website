@@ -9,11 +9,14 @@ class Service extends Model
 {
     protected $guarded = [];
 
+
     // Set redirect link if empty
     public function setServiceRedirectLinkAttribute($value)
     {
         if (is_null($value)) {
             $this->attributes['service_redirect_link'] = config('website.service_default_redirect_link', '#');
+        } else {
+            $this->attributes['service_redirect_link'] = $value;
         }
     }
 
@@ -22,6 +25,8 @@ class Service extends Model
     {
         if (is_null($value)) {
             $this->attributes['service_icon']  = config('website.service_default_icon', 'fa fa-concierge-bell');
+        } else {
+            $this->attributes['service_icon'] = $value;
         }
     }
 

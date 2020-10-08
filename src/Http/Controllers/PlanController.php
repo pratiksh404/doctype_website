@@ -5,7 +5,6 @@ namespace doctype_admin\Website\Http\Controllers;
 use doctype_admin\Website\Facades\Website;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Cache;
 use doctype_admin\Website\Models\Plan;
 
 class PlanController extends Controller

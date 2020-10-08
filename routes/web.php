@@ -11,4 +11,5 @@ Route::resources([
     'service' =>  'ServiceController',
     'plan' =>  'PlanController',
     'faq' =>  'FaqController',
+    'project' => 'ProjectController'
 ]);

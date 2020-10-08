@@ -11,6 +11,7 @@ use doctype_admin\Website\Models\Team;
 use doctype_admin\Website\Models\Counter;
 use doctype_admin\Website\Models\Service;
 use doctype_admin\Website\Models\Portfolio;
+use doctype_admin\Website\Models\Project;
 
 class WebsiteDataRepository implements WebsiteDataRepositoryInterface
 {
@@ -82,5 +83,14 @@ class WebsiteDataRepository implements WebsiteDataRepositoryInterface
                 return Team::all();
             })
             : Team::all();
+    }
+
+    public function project()
+    {
+        return config('website.caching', true)
+            ? Cache::has('projects') ? Cache::get('projects') : Cache::rememberForever('projects', function () {
+                return Project::all();
+            })
+            : Project::all();
     }
 }
