@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Show Project')
+@section('title', 'Create Project')
 
 @section('content_header')
 
@@ -9,13 +9,13 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Show Project</h1>
+                <h1>Create Project</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ websiteRedirectRoute('dashboard')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="{{ websiteRedirectRoute('project')}}">Project</a></li>
-                    <li class="breadcrumb-item active">Show Project</li>
+                    <li class="breadcrumb-item active">Create Project</li>
                 </ol>
             </div>
         </div>
@@ -32,33 +32,15 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Show Project</h3>
+                    <h3 class="card-title">Create Project</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <b>Project Name : </b>{{$project->name ?? ''}}
-                            <br><br>
-                            <b>Project Excerpt :</b> <br>
-                            @if ($project->excerpt)
-                            {!! $project->excerpt !!}
-                            @endif
-                        </div>
-                        <div class="col-lg-6">
-                            @if ($project->image)
-                            <img src="{{asset($project->thumbnail('image','small'))}}" alt="{{$project->name}}"
-                                class="img-fluid">
-                            @endif
-                        </div>
-                    </div>
-                    <div class="row">
-                        @if ($project->descripton)
-                        <b>Project Description :</b>
-                        <br>
-                        {!! $project->description !!}
-                        @endif
-                    </div>
+                    <form action="{{ websiteStoreRoute('project') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @include('website::layouts.project.edit_add')
+                    </form>
+                    <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
             </div>

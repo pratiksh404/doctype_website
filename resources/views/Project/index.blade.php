@@ -56,13 +56,14 @@
                                 <td class="d-flex justify-content-around">
                                     <a href="{{websiteEditRoute('project',$project->id)}}" class="btn btn-warning"><i
                                             class="fas fa-edit"></i></a>
-                                    <a href="{{websiteShowRoute}}" class="btn btn-success"><i class="fa fa-eye"></i></a>
+                                    <a href="{{websiteShowRoute('project',$project->id)}}" class="btn btn-success"><i
+                                            class="fa fa-eye"></i></a>
                                     <button type="button" class="btn btn-danger" data-toggle="modal"
                                         data-target="#project-delete-{{$project->id}}">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </td>
-                                @include('website::layouts.project.modal.confirm_delete')
+                                @include('website::layouts.project.modal.delete_modal')
                             </tr>
                             @endforeach
                             @endif

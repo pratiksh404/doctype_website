@@ -60,7 +60,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view('website::project.show', compact('project'));
     }
 
 
@@ -136,8 +136,16 @@ class ProjectController extends Controller
                 'width' => '600',
                 'height' => '600',
                 'quality' => '70',
+                'thumbnails' => [
+                    [
+                        'thumbnail-name' => 'small',
+                        'thumbnail-width' => '300',
+                        'thumbnail-height' => '300',
+                        'thumbnail-quality' => '40'
+                    ]
+                ]
             ];
-            $project->uploadImage('image', $thumbnails);
+            $project->makeThumbnail('image', $thumbnails);
         }
     }
 }

@@ -126,7 +126,11 @@ If seed class is not found try running composer dump-autoload
                     'icon' => 'fas fa-plus',
                     'url' => 'admin/website/plan',
                 ],
-
+                [
+                    'text' => 'Project',
+                    'icon' => 'fas fa-book',
+                    'url' => 'admin/website/project',
+                ],
             ]
         ],
 ```
